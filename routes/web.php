@@ -13,26 +13,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', "PrincipalController@principal");
+Route::get('/', "PrincipalController@principal")->name('site.index');
 
-Route::get('/sobre-nos', "SobreNosController@sobrenos");
+Route::get('/sobre-nos', "SobreNosController@sobrenos")->name('site.sobrenos');
 
-Route::get('/contato', "ContatoController@contato");
+Route::get('/contato', "ContatoController@contato")->name('site.contato');
+Route::post('/contato', "ContatoController@contato")->name('site.contato');
 
 Route::get('/login', function() {
     return 'Login';
-});
+})->name('app.login');
 
 Route::prefix('/app')->group(function() {
     Route::get('/clientes', function() {
         return 'clientes';
-    });
-    Route::get('/fornecedores', function() {
-        return 'fornecedores';
-    });
+    })->name('app.clientes');
+
+    Route::get('/fornecedores', 'FornecedoresController@index')->name('app.fornecedores');
+
     Route::get('/produtos', function() {
         return 'produtos';
-    });
+    })->name('app.produtos');
 });
 
 
+Route::fallback(function() {
+    return 'A rota solicitada não existe, <a href="'.route('site.index').'">clique aqui</a>';
+});
