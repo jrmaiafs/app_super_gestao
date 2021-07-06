@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\LogAcessoMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,20 +21,20 @@ Route::get('/sobre-nos', "SobreNosController@sobrenos")->name('site.sobrenos');
 Route::get('/contato', "ContatoController@contato")->name('site.contato');
 Route::post('/contato', "ContatoController@salvar")->name('site.contato');
 
-Route::get('/login', function() {
-    return 'Login';
-})->name('app.login');
+Route::get('/login/{erro?}', "LoginController@index")->name('site.login');
+Route::post('/login', "LoginController@autenticar")->name('site.login');
 
-Route::prefix('/app')->group(function() {
-    Route::get('/clientes', function() {
-        return 'clientes';
-    })->name('app.clientes');
+Route::middleware('autenticacao')->prefix('/app')->group(function() {
 
-    Route::get('/fornecedores', 'FornecedoresController@index')->name('app.fornecedores');
+    Route::get('/home', 'HomeController@index')->name('app.home');
+    
+    Route::get('/sair', 'LoginController@sair')->name('app.sair');
 
-    Route::get('/produtos', function() {
-        return 'produtos';
-    })->name('app.produtos');
+    Route::get('/cliente', 'ClienteController@index')->name('app.cliente');
+
+    Route::get('/fornecedor', 'FornecedorController@index')->name('app.fornecedor');
+
+    Route::get('/produto', 'ProdutoController@index')->name('app.produto');
 });
 
 
