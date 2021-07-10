@@ -195,3 +195,26 @@ button:hover {
 .redes-sociais img {
     margin: 0px 15px 0px 15px;
 }
+
+.pagination li {
+    display: inline;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.pagination {
+    list-style: none;
+}
+
+.pagination .active {
+    font-weight: bold;
+}
+
+.page-link {
+    text-decoration: none;
+    color: #333;
+}
+
+.page-link:visited {
+    color: #333;
+}
