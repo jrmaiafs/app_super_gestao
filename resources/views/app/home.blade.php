@@ -1,4 +1,4 @@
-@extends('app.layouts.basico');
+@extends('app.layouts.basico')
 
 @section('title', $title)
 
