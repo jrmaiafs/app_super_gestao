@@ -15,7 +15,7 @@ class ProdutoController extends Controller
      */
     public function index(Request $request)
     {
-        $produtos = Produto::paginate(1);
+        $produtos = Produto::paginate(2);
         return view('app.produto.index', ['produtos' => $produtos, 'request' => $request->all()]);
     }
 
@@ -68,7 +68,7 @@ class ProdutoController extends Controller
      */
     public function show(Produto $produto)
     {
-        //
+        return view('app.produto.show', ['produto' => $produto]);
     }
 
     /**
@@ -79,7 +79,6 @@ class ProdutoController extends Controller
      */
     public function edit(Produto $produto)
     {
-        //
     }
 
     /**
