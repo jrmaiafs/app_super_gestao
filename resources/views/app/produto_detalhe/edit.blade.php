@@ -13,6 +13,11 @@
             </ul>
         </div>
         <div class="informacao-pagina">
+            <div>
+                <h4>Produto</h4>
+                <p>Nome: {{$produto_detalhe->item->nome}}</p>
+                <p>Descrição: {{$produto_detalhe->item->descricao}}</p>
+            </div>
             <div style="width: 30%; margin-left: auto; margin-right: auto">
                 @component('app.produto_detalhe._components.form_create_edit', ['produto_detalhe' => $produto_detalhe, 'unidades' => $unidades])
                 @endcomponent
