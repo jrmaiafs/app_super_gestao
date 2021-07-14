@@ -1,6 +1,6 @@
 @extends('app.layouts.basico')
 
-@section('title', $title)
+@section('title', 'Cliente')
 
 @section('conteudo')
     <br><br><br><br><br><br>Cliente
