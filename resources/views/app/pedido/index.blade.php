@@ -18,8 +18,9 @@
                 <table border="1" width="100%">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>ID Pedido</th>
                             <th>Cliente</th>
+                            <th></th>
                             <th></th>
                             <th></th>
                             <th></th>
@@ -30,6 +31,7 @@
                             <tr>
                                 <td>{{$pedido->id}}</td>
                                 <td>{{$pedido->cliente_id}}</td>
+                                <td><a href="{{route('pedido-produto.create', ['pedido' => $pedido->id])}}">Adicionar Produtos</a></td>
                                 <td><a href="{{route('pedido.show', ['pedido' => $pedido->id])}}">Visualizar</a></td>
                                 <td>
                                     <form id="form_{{$pedido->id}}" method="POST" action="{{route('pedido.destroy', ['pedido' => $pedido->id])}}">
